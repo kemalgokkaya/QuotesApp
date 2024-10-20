@@ -29,6 +29,52 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [QuotesPage]
+class QuotesRoute extends PageRouteInfo<QuotesRouteArgs> {
+  QuotesRoute({
+    Key? key,
+    required int id,
+    List<PageRouteInfo>? children,
+  }) : super(
+          QuotesRoute.name,
+          args: QuotesRouteArgs(
+            key: key,
+            id: id,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'QuotesRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<QuotesRouteArgs>();
+      return QuotesPage(
+        key: args.key,
+        id: args.id,
+      );
+    },
+  );
+}
+
+class QuotesRouteArgs {
+  const QuotesRouteArgs({
+    this.key,
+    required this.id,
+  });
+
+  final Key? key;
+
+  final int id;
+
+  @override
+  String toString() {
+    return 'QuotesRouteArgs{key: $key, id: $id}';
+  }
+}
+
+/// generated route for
 /// [SplashPage]
 class SplashRoute extends PageRouteInfo<void> {
   const SplashRoute({List<PageRouteInfo>? children})

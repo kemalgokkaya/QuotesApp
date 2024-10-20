@@ -17,6 +17,11 @@
             "group": "build",
             "label": "flutter: build_runner build --delete-conflicting-outputs",
             "detail": ""
+        },
+        {
+            "type": "shell",
+            "command": "dart run flutter_native_splash:create",
+            "label": "native splash"
         }
     ]
 }

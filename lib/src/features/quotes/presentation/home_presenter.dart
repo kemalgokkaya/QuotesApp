@@ -16,3 +16,4 @@ final homePresenterProvider =
     StateNotifierProvider<HomePresenter, List<CategoryModel>>((ref) {
   return HomePresenter(ref);
 });
+final loadingProvider = StateProvider<bool>((ref) => true);

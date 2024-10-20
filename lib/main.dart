@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:quotes/quotes.dart';
 
 final appRouter = AppRouter();
+
 void main() {
   runApp(
-    const ProviderScope(
-      child: SplashPage(),
+    ProviderScope(
+      child: const MyApp(),
     ),
   );
 }
