@@ -13,17 +13,18 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.8
   dio: ^5.7.0
-  flutter_riverpod: ^2.5.3
+  flutter_riverpod: ^2.6.1
   freezed_annotation: ^2.4.4
   auto_route: ^9.2.2
-  share_plus: ^10.1.0
+  share_plus: ^10.1.1
   logger: ^2.4.0
-  flutter_native_splash: ^2.4.1
+  flutter_native_splash: ^2.4.2
+  flutter_launcher_icons: "^0.14.1"
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^5.0.0  
   freezed: ^2.5.7
   json_serializable: ^6.8.0
   build_runner: ^2.4.13
@@ -35,13 +36,20 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/quotes.jpg
+    - assets/
 
 flutter_native_splash:
-  color: "#42a5f5"
-  image: assets/quotes.jpg
+  color: "#0132cc"
+  image: assets/logo.png
   android: true
   ios: true
   android_12: 
-    color: "#42a5f5"
-    image: assets/quotes.jpg
+    color: "#0132cc"
+    image: assets/logo.png
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/logo.png"
+  adaptive_icon_background: "#0132cc"
+  adaptive_icon_foreground: "assets/logo.png"

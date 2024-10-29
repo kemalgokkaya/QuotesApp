@@ -22,6 +22,11 @@
             "type": "shell",
             "command": "dart run flutter_native_splash:create",
             "label": "native splash"
+        },
+        {
+            "type": "shell",
+            "command": "dart run flutter_launcher_icons",
+            "label": "app_icon"
         }
     ]
 }

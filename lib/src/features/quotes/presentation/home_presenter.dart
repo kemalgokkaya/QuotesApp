@@ -1,14 +1,18 @@
 import 'package:quotes/quotes.dart';
 
 class HomePresenter extends StateNotifier<List<CategoryModel>> {
+  int page = 1;
+
   final Ref ref;
   HomePresenter(this.ref) : super([]) {
     getCategories();
   }
 
   Future getCategories() async {
-    List<CategoryModel> response = await ref.read(getCategoriesUseCase).call(1);
-    state = response;
+    List<CategoryModel> response =
+        await ref.read(getCategoriesUseCase).call(page);
+    state = {...state, ...response}.toList();
+    page++;
   }
 }
 
