@@ -6,4 +6,5 @@ abstract class QuotesRepository {
     required int page,
   });
   Future<List<QuoteModel>> getQuotes({required int categoryId});
+  Future<List<CategoryModel>> searchCategory({required String query});
 }

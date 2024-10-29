@@ -16,4 +16,13 @@ final homePresenterProvider =
     StateNotifierProvider<HomePresenter, List<CategoryModel>>((ref) {
   return HomePresenter(ref);
 });
+
 final loadingProvider = StateProvider<bool>((ref) => true);
+
+final searchCategoryFutureProvider = FutureProvider.autoDispose
+    .family<List<CategoryModel>, String>((ref, query) async {
+  ref.cacheFor(Duration(seconds: 60));
+  List<CategoryModel> response =
+      await ref.read(searchCategoryUseCase).call(query);
+  return response;
+});

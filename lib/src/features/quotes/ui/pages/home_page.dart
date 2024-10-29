@@ -10,6 +10,8 @@ class HomePage extends ConsumerStatefulWidget {
 }
 
 class _HomePageState extends ConsumerState<HomePage> {
+  ScrollController scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     final List<CategoryModel> categories = ref.watch(homePresenterProvider);
@@ -22,6 +24,16 @@ class _HomePageState extends ConsumerState<HomePage> {
           "Quotes",
           style: TextStyle(color: Colors.white),
         ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                showSearch(context: context, delegate: SearchDelegratePage());
+              },
+              icon: Icon(
+                Icons.search,
+                color: Colors.white,
+              )),
+        ],
       ),
       body: Container(
         color: Colors.blueAccent,
@@ -30,7 +42,7 @@ class _HomePageState extends ConsumerState<HomePage> {
           itemBuilder: (context, index) {
             CategoryModel category = categories[index];
             return Container(
-              margin: EdgeInsets.only(top: 10),
+              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               decoration: BoxDecoration(
                 color: Colors.white10,
                 borderRadius: BorderRadius.circular(10),
@@ -43,7 +55,9 @@ class _HomePageState extends ConsumerState<HomePage> {
                 trailing: Icon(Icons.arrow_circle_right_sharp),
                 onTap: () {
                   if (category.id != null) {
-                    appRouter.push(QuotesRoute(id: category.id!));
+                    appRouter.push(
+                      QuotesRoute(category: category),
+                    );
                   }
                 },
               ),

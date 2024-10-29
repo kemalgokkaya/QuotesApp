@@ -33,13 +33,13 @@ class HomeRoute extends PageRouteInfo<void> {
 class QuotesRoute extends PageRouteInfo<QuotesRouteArgs> {
   QuotesRoute({
     Key? key,
-    required int id,
+    required CategoryModel category,
     List<PageRouteInfo>? children,
   }) : super(
           QuotesRoute.name,
           args: QuotesRouteArgs(
             key: key,
-            id: id,
+            category: category,
           ),
           initialChildren: children,
         );
@@ -52,7 +52,7 @@ class QuotesRoute extends PageRouteInfo<QuotesRouteArgs> {
       final args = data.argsAs<QuotesRouteArgs>();
       return QuotesPage(
         key: args.key,
-        id: args.id,
+        category: args.category,
       );
     },
   );
@@ -61,16 +61,16 @@ class QuotesRoute extends PageRouteInfo<QuotesRouteArgs> {
 class QuotesRouteArgs {
   const QuotesRouteArgs({
     this.key,
-    required this.id,
+    required this.category,
   });
 
   final Key? key;
 
-  final int id;
+  final CategoryModel category;
 
   @override
   String toString() {
-    return 'QuotesRouteArgs{key: $key, id: $id}';
+    return 'QuotesRouteArgs{key: $key, category: $category}';
   }
 }
 

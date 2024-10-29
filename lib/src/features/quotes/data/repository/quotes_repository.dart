@@ -45,4 +45,21 @@ class DataQuotesRepository extends QuotesRepository {
       rethrow;
     }
   }
+
+  @override
+  Future<List<CategoryModel>> searchCategory({required String query}) async {
+    try {
+      Response response = await _baseRepository.executeRequest(
+        requestType: RequestType.get,
+        path: searchCategoryUrl(query),
+      );
+      return (response.data as List)
+          .map((val) => CategoryModel.fromJson(val))
+          .toList();
+    } catch (e, st) {
+      logger.e(e);
+      logger.e(st);
+      rethrow;
+    }
+  }
 }
