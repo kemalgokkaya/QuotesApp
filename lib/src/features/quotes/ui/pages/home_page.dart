@@ -18,69 +18,82 @@ class _HomePageState extends ConsumerState<HomePage> {
     bool loading = false;
 
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.blueAccent,
-          centerTitle: true,
-          title: Text(
-            "Quotes",
-            style: TextStyle(color: Colors.white),
-          ),
-          actions: [
-            IconButton(
-                onPressed: () {
-                  showSearch(context: context, delegate: SearchDelegratePage());
-                },
-                icon: Icon(
-                  Icons.search,
-                  color: Colors.white,
-                )),
-          ],
+      appBar: AppBar(
+        backgroundColor: Colors.blueAccent,
+        centerTitle: true,
+        title: Text(
+          "Kategoriler",
+          style: TextStyle(color: Colors.white),
         ),
-        body: NotificationListener<ScrollNotification>(
-          onNotification: (scrollInfo) {
-            if (scrollInfo.metrics.pixels ==
-                    scrollInfo.metrics.maxScrollExtent &&
-                !loading) {
-              loading = true;
-              ref
-                  .read(homePresenterProvider.notifier)
-                  .getCategories()
-                  .then((val) {
-                loading = false;
-              });
-            }
-            return false;
-          },
-          child: Container(
-            color: Colors.blueAccent,
-            child: ListView.builder(
-              itemCount: categories.length,
-              itemBuilder: (context, index) {
-                CategoryModel category = categories[index];
-                return Container(
-                  margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                  decoration: BoxDecoration(
-                    color: Colors.white10,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: ListTile(
-                    title: Text(
-                      category.categoryName ?? "",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    trailing: Icon(Icons.arrow_circle_right_sharp),
-                    onTap: () {
-                      if (category.id != null) {
-                        appRouter.push(
-                          QuotesRoute(category: category),
-                        );
-                      }
-                    },
-                  ),
-                );
+        actions: [
+          IconButton(
+              onPressed: () {
+                showSearch(context: context, delegate: SearchDelegratePage());
               },
-            ),
+              icon: Icon(
+                Icons.search,
+                color: Colors.white,
+              )),
+        ],
+      ),
+      body: NotificationListener<ScrollNotification>(
+        onNotification: (scrollInfo) {
+          if (scrollInfo.metrics.pixels == scrollInfo.metrics.maxScrollExtent &&
+              !loading) {
+            loading = true;
+            ref
+                .read(homePresenterProvider.notifier)
+                .getCategories()
+                .then((val) {
+              loading = false;
+            });
+          }
+          return false;
+        },
+        child: Container(
+          color: Colors.blueAccent,
+          child: Column(
+            children: [
+              Expanded(
+                child: Stack(
+                  children: [
+                    ListView.builder(
+                      itemCount: categories.length,
+                      itemBuilder: (context, index) {
+                        CategoryModel category = categories[index];
+                        return Container(
+                          margin:
+                              EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                          decoration: BoxDecoration(
+                            color: Colors.white10,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: ListTile(
+                            title: Text(
+                              category.categoryName ?? "",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            trailing: Icon(Icons.arrow_circle_right_sharp,
+                                color: Colors.white),
+                            onTap: () {
+                              if (category.id != null) {
+                                appRouter.push(
+                                  QuotesRoute(category: category),
+                                );
+                              }
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              AdMobBanner(),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

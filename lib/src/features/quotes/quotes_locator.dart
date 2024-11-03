@@ -4,5 +4,5 @@ final getCategoriesUseCase =
     Provider((ref) => GetCategoriesUseCase(DataQuotesRepository()));
 final getQuotesUseCase =
     Provider((ref) => GetQuotesUseCase(DataQuotesRepository()));
-final searchCategoryUseCase =
-    Provider((ref) => SearchCategoryUseCase(DataQuotesRepository()));
+final searchCategoryUseCase = Provider<SearchCategoryUseCase>(
+    (ref) => SearchCategoryUseCase(DataQuotesRepository()));
