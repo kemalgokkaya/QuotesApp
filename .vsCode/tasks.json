@@ -27,6 +27,11 @@
             "type": "shell",
             "command": "dart run flutter_launcher_icons",
             "label": "app_icon"
+        },
+        {
+            "type": "shell",
+            "command": " flutter build apk --target-platform android-arm,android-arm64,android-x64 --obfuscate --split-debug-info=./",
+            "label": "build apk"
         }
     ]
 }
