@@ -51,19 +51,6 @@ class _QuotesPageState extends ConsumerState<QuotesPage> {
                         quote.word ?? "",
                         style: TextStyle(color: Colors.white),
                       ),
-                      trailing: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Icon(
-                            Icons.content_copy,
-                            color: Colors.white,
-                          ),
-                          Icon(
-                            Icons.share,
-                            color: Colors.white,
-                          ),
-                        ],
-                      ),
                     ),
                   );
                 },
