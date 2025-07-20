@@ -13,4 +13,22 @@ class CategoryModel with _$CategoryModel {
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) =>
       _$CategoryModelFromJson(json);
+
+  @override
+  // TODO: implement categoryName
+  String? get categoryName => throw UnimplementedError();
+
+  @override
+  // TODO: implement id
+  int? get id => throw UnimplementedError();
+
+  @override
+  // TODO: implement slug
+  String? get slug => throw UnimplementedError();
+
+  @override
+  Map<String, dynamic> toJson() {
+    // TODO: implement toJson
+    throw UnimplementedError();
+  }
 }

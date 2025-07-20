@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:quotes/quotes.dart';
 
 class AdMobBanner extends StatefulWidget {
   const AdMobBanner({super.key});
@@ -15,7 +16,7 @@ class _AdMobBannerState extends State<AdMobBanner>
 
   void loadBannerAd() {
     bannerAd = BannerAd(
-      adUnitId: "ca-app-pub-3323165490285936/3282086761",
+      adUnitId: "ca-app-pub-3323165490285936/9049518107",
       request: const AdRequest(),
       size: AdSize.banner,
       listener: BannerAdListener(
@@ -26,6 +27,7 @@ class _AdMobBannerState extends State<AdMobBanner>
         },
         onAdFailedToLoad: (ad, err) {
           ad.dispose();
+          logger.e(err);
         },
       ),
     );
@@ -49,8 +51,8 @@ class _AdMobBannerState extends State<AdMobBanner>
     super.build(context);
     return bannerIsReady
         ? SizedBox(
-            width: MediaQuery.of(context).size.width % 80,
-            height: MediaQuery.of(context).size.width % 110,
+            width: bannerAd.size.width.toDouble(),
+            height: bannerAd.size.height.toDouble(),
             child: AdWidget(ad: bannerAd),
           )
         : SizedBox.shrink();

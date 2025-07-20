@@ -5,9 +5,10 @@ import 'package:quotes/quotes.dart';
 
 final appRouter = AppRouter();
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  MobileAds.instance.initialize();
+  await MobileAds.instance.initialize();
+
   runApp(
     ProviderScope(
       child: const MyApp(),
@@ -17,12 +18,19 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: appRouter.config(),
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        pageTransitionsTheme: PageTransitionsTheme(
+          builders: {
+            TargetPlatform.android:
+                ZoomPageTransitionsBuilder(backgroundColor: Colors.blueAccent)
+          },
+        ),
+      ),
     );
   }
 }

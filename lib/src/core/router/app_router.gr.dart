@@ -1,3 +1,4 @@
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
@@ -13,10 +14,7 @@ part of 'app_router.dart';
 /// [HomePage]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
-      : super(
-          HomeRoute.name,
-          initialChildren: children,
-        );
+      : super(HomeRoute.name, initialChildren: children);
 
   static const String name = 'HomeRoute';
 
@@ -37,10 +35,7 @@ class QuotesRoute extends PageRouteInfo<QuotesRouteArgs> {
     List<PageRouteInfo>? children,
   }) : super(
           QuotesRoute.name,
-          args: QuotesRouteArgs(
-            key: key,
-            category: category,
-          ),
+          args: QuotesRouteArgs(key: key, category: category),
           initialChildren: children,
         );
 
@@ -50,19 +45,13 @@ class QuotesRoute extends PageRouteInfo<QuotesRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<QuotesRouteArgs>();
-      return QuotesPage(
-        key: args.key,
-        category: args.category,
-      );
+      return QuotesPage(key: args.key, category: args.category);
     },
   );
 }
 
 class QuotesRouteArgs {
-  const QuotesRouteArgs({
-    this.key,
-    required this.category,
-  });
+  const QuotesRouteArgs({this.key, required this.category});
 
   final Key? key;
 
@@ -72,4 +61,14 @@ class QuotesRouteArgs {
   String toString() {
     return 'QuotesRouteArgs{key: $key, category: $category}';
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! QuotesRouteArgs) return false;
+    return key == other.key && category == other.category;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ category.hashCode;
 }

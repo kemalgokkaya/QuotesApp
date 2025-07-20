@@ -30,18 +30,19 @@ class _QuotesPageState extends ConsumerState<QuotesPage> {
           widget.category.categoryName ?? "Sözler",
           style: TextStyle(color: Colors.white),
         ),
+        iconTheme: IconThemeData(color: Colors.white),
       ),
-      body: Container(
-        decoration: BoxDecoration(color: Colors.blueAccent),
-        child: Column(
-          children: [
-            Expanded(
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: Container(
+              decoration: BoxDecoration(color: Colors.blueAccent),
               child: ListView.builder(
                 itemCount: quotes.length,
                 itemBuilder: (context, index) {
-                  QuoteModel quote = quotes[index];
+                  final quote = quotes[index];
                   return Container(
-                    margin: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                    margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(
                       color: Colors.white10,
                       borderRadius: BorderRadius.circular(20),
@@ -56,9 +57,14 @@ class _QuotesPageState extends ConsumerState<QuotesPage> {
                 },
               ),
             ),
-            AdMobBanner(),
-          ],
-        ),
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: AdMobBanner(),
+          ),
+        ],
       ),
     );
   }

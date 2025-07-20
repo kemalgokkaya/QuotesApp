@@ -13,4 +13,22 @@ class QuoteModel with _$QuoteModel {
 
   factory QuoteModel.fromJson(Map<String, dynamic> json) =>
       _$QuoteModelFromJson(json);
+
+  @override
+  // TODO: implement categoryId
+  int? get categoryId => throw UnimplementedError();
+
+  @override
+  // TODO: implement id
+  int? get id => throw UnimplementedError();
+
+  @override
+  Map<String, dynamic> toJson() {
+    // TODO: implement toJson
+    throw UnimplementedError();
+  }
+
+  @override
+  // TODO: implement word
+  String? get word => throw UnimplementedError();
 }
